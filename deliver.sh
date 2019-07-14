@@ -60,7 +60,7 @@ do
  DURATION_SEC=$(($CURRENTIME-$NOWTIME))
  echo "DURATION_SEC=$DURATION_SEC"
  echo 
- if [[ $CURRENTIME -eq $TILTIMECOMPLETE ]]
+ if [[ $CURRENTIME -ge $TILTIMECOMPLETE ]]
  then
 	 echo "Service wait time ends"
 	 exit 0
