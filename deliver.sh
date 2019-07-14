@@ -46,7 +46,10 @@ do
  ssh -i $HOME/id_rsa -p 9999 vagrant@172.17.0.1 'curl http://10.1.0.4:32339'
  CHK
  CURRENTIME=$(date +%s)
- if [[ $CURRENTTIME -eq $TILTIMECOMPLETE ]]
+ DURATION_SEC=$(($CURRENTIME-$NOWTIME))
+ echo "DURATION_SEC=$DURATION_SEC"
+ echo 
+ if [[ $CURRENTIME -eq $TILTIMECOMPLETE ]]
  then
 	 echo "Service wait time ends"
 	 exit 0
