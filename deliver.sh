@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo 'TestingTesting'
-docker build . -t 10.1.0.7:3333/spring-mysql:1.0; docker images | grep actuator
+docker build . -t 10.1.0.7:3333/spring-mysql:1.0; docker images | grep spring-mysql
 echo 'Pushing'
 docker push 10.1.0.7:3333/spring-mysql:1.0; echo $?; echo test
 
@@ -31,6 +31,12 @@ CHK(){
     	         exit 0
         fi
  }
+
+#Default duration check time until service on.
+NOWTIME=$(date +%s)
+#5 MINUTES
+TILTIME=300
+TILTIMECOMPLETE=$(($NOWTIME+$TILTIME))
 while true
 do
  ssh -i $HOME/id_rsa -p 9999 vagrant@172.17.0.1 'curl http://10.1.0.3:32339'
@@ -39,4 +45,10 @@ do
  CHK
  ssh -i $HOME/id_rsa -p 9999 vagrant@172.17.0.1 'curl http://10.1.0.4:32339'
  CHK
+ CURRENTIME=$(date +%s)
+ if [[ $CURRENTTIME -eq $TILTIMECOMPLETE ]]
+ then
+	 echo "Service wait time ends"
+	 exit 0
+ fi
 done
