@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: spring-mysql
+spec:
+  replicas: 1
+  template:
+     metadata:
+       labels:
+         app: spring-mysql
+     spec:
+       containers:
+       - name: spring-mysql
+         image: 10.1.0.7:3333/spring-mysql:1.0
+         imagePullPolicy: Always
+         ports:
+         - containerPort: 8080
+       imagePullSecrets:
+         - name: regcred

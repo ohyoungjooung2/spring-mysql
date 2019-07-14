@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-mysql
+  labels:
+    app: spring-mysql
+spec:
+  ports:
+    - port: 8080
+  selector:
+    app: spring-mysql
+  type: NodePort
+  ports:
+  - port: 8073
+    nodePort: 32339
+    targetPort: 8080
+    protocol: TCP
+    name: http
