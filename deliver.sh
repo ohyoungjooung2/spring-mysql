@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
 echo 'TestingTesting'
 docker build . -t 10.1.0.7:3333/spring-mysql:1.0; docker images | grep spring-mysql
+
+#If docker build fails then exit!
+if [[ $? ! -eq 0 ]]
+then
+	echo -e "\e[33m docker build failed \e[00m"
+	exit 1
+else
+	echo -e "\e[35m docker build success \e[00m"
+fi
+
+
 echo 'Pushing'
 docker push 10.1.0.7:3333/spring-mysql:1.0; echo $?; echo test
 
