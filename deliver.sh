@@ -89,6 +89,7 @@ do
  if [[ $CURRENTIME -ge $TILTIMECOMPLETE ]]
  then
 	 echo "Service wait time ends"
-	 exit 0
+	 echo "Deploy failed..:("
+	 exit 1
  fi
 done
