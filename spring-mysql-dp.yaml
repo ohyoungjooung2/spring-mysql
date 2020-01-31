@@ -1,4 +1,4 @@
-#apiVersion: extensions/v1beta1
+# apiVersion: extensions/v1beta1
 #Above is for 1.5 or?
 #For k8s 1.7,apps/v1
 apiVersion: apps/v1
