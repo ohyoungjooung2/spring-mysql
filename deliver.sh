@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-KEY="$KEY"
+KEY="$HOME/id_rsa"
 #KCTL=$(which kubectl)
 echo 'TestingTesting'
 docker build . -t 10.1.0.7:3333/spring-mysql:1.0; docker images | grep spring-mysql
