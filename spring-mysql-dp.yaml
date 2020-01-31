@@ -6,16 +6,16 @@ kind: Deployment
 metadata:
   name: spring-mysql
   labels:
-    app: spring-mysql-example
+    app: spring-mysql
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: spring-mysql-example 
+      app: spring-mysql 
   template:
     metadata:
       labels:
-        app: spring-mysql-example
+        app: spring-mysql
     spec:
       containers:
       - name: spring-mysql
