@@ -27,6 +27,11 @@ then
 	then
 		echo "spring-mysql deploy already exists , apply!"
                 ssh -i $KEY $ST -p 22 vagrant@10.1.0.2 '/usr/bin/kubectl apply -f spring-mysql-dp.yaml'
+		if [[ $? != 0 ]]
+	        then
+			echo "Failed apply kubectl spring-mysql-dp.yaml"
+			exit 1
+		fi
         else
 		echo "spring-mysql deploy not exists , create!"
 	ssh -i $KEY $ST -p 22 vagrant@10.1.0.2 '/usr/bin/kubectl create -f spring-mysql-dp.yaml'
